@@ -7,14 +7,6 @@ import static java.util.Map.entry;
 import static java.util.Map.ofEntries;
 
 public class BalancedParanthesis {
-    public static void main(String[] args) {
-        boolean bool = isBalancedParanthesis("({[]})");
-        System.out.println(isBalancedParanthesis("({[]})"));
-        System.out.println(isBalancedParanthesis("({[]})("));
-        System.out.println(isBalancedParanthesis("({[]})()"));
-        System.out.println(isBalancedParanthesis("({[]}))"));
-    }
-
     static Map<Character, Character> map = ofEntries(
                                             entry('(', ')'),
                                             entry('{', '}'),
