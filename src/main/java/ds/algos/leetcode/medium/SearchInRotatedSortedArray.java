@@ -1,4 +1,4 @@
-package ds.algos.algorithms4.ch1.leetcode.medium;
+package ds.algos.leetcode.medium;
 
 /**
  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.

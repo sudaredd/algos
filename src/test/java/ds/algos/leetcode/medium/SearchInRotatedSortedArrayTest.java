@@ -1,4 +1,4 @@
-package ds.algos.algorithms4.ch1.leetcode.medium;
+package ds.algos.leetcode.medium;
 
 import org.junit.jupiter.api.Test;
 
