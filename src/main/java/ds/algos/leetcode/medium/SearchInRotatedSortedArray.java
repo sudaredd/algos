@@ -19,6 +19,7 @@ public class SearchInRotatedSortedArray {
             return -1;
         int left = 0;
         int right = nums.length - 1;
+        //find start element
         while (left < right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] > nums[right])
@@ -26,6 +27,7 @@ public class SearchInRotatedSortedArray {
             else
                 right = mid;
         }
+
         int start = left;
         left = 0;
         right = nums.length - 1;
