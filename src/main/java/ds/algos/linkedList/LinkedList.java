@@ -33,6 +33,29 @@ public class LinkedList {
         root=node;
     }
 
+    public Node reverse(Node node) {
+        Node prev = null;
+        Node current = node;
+        while (current != null) {
+            Node next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
+
+    public void addAt(int val, int pos) {
+        Node node = new Node(val);
+        Node first = root;
+        pos--;
+        while (--pos > 0) {
+            first = first.next;
+        }
+        node.next=first.next;
+        first.next=node;
+    }
+
     public void addLast(int val) {
         Node node = new Node(val);
         if(root==null) {
@@ -46,19 +69,41 @@ public class LinkedList {
         temp.next = node;
     }
 
+    public void printReverse(Node node) {
+        if(node == null)
+            return;
+        printReverse(node.next);
+        System.out.print(node.getVal() + " ");
+    }
+
     public void println() {
-        Node temp = root;
+        print(root);
+    }
+
+    private void print(Node temp) {
         while (temp != null) {
             System.out.print(temp.getVal() + " ");
             temp = temp.next;
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
         linkedList.addFirst(3);
-        linkedList.addLast(2);
+        linkedList.addFirst(2);
         linkedList.addFirst(1);
+        linkedList.addLast(4);
+        linkedList.addLast(5);
+        linkedList.addLast(6);
+        linkedList.addLast(7);
         linkedList.println();
+        linkedList.printReverse(linkedList.root);
+        System.out.println();
+        linkedList.addAt(10, 4);
+        linkedList.println();
+        Node reverse = linkedList.reverse(linkedList.root);
+        linkedList.print(reverse);
+
     }
 }
