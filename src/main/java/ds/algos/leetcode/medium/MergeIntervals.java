@@ -21,7 +21,6 @@ public class MergeIntervals {
         int[] current = intervals[0];
         list.add(current);
         for (int[] interval : intervals) {
-            int currentBegin = current[0];
             int currentEnd = current[1];
             int nextBegin = interval[0];
             int nextEnd = interval[1];
