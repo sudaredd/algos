@@ -1,5 +1,11 @@
 package ds.algos.dp;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class UniquePaths {
 
     /**
@@ -60,6 +66,7 @@ public class UniquePaths {
 
     /**
      * f(i)(j) = Max(f(i-1,j) , f(i, j-1) + matrix(i,j)
+     *
      * @param matrx
      * @return
      */
@@ -74,14 +81,39 @@ public class UniquePaths {
             for (int col = 0; col < columns; col++) {
                 int price = matrx[row][col];
                 if (row > 0 && col > 0) {
-                    dp[row][col] = Math.max(dp[row - 1][col] , dp[row][col - 1]) + price;
+                    dp[row][col] = Math.max(dp[row - 1][col], dp[row][col - 1]) + price;
                 } else if (row > 0) {
                     dp[row][col] = dp[row - 1][col] + price;
                 } else if (col > 0) {
-                    dp[row][col] = dp[row][col - 1]  + price;
+                    dp[row][col] = dp[row][col - 1] + price;
                 }
             }
         }
+        print(dp);
         return dp[rows - 1][columns - 1];
+    }
+
+    private void print(int[][] dp) {
+        List<int[]> list = new ArrayList<>();
+
+        for (int row = dp.length - 1, col = dp[row].length -1; ; ) {
+            list.add(new int[]{row,col});
+            if(row==0 && col==0) {
+                break;
+            }
+            else if(row==0) {
+                col=col-1;
+            } else if (col==0) {
+                row = row-1;
+            } else {
+                if(dp[row-1][col] > dp[row][col-1]) {
+                    row = row-1;
+                } else {
+                    col = col-1;
+                }
+            }
+        }
+        Collections.reverse(list);
+        list.stream().forEach(a-> System.out.println(Arrays.toString(a)));
     }
 }
