@@ -95,25 +95,25 @@ public class UniquePaths {
 
     private void print(int[][] dp) {
         List<int[]> list = new ArrayList<>();
-
-        for (int row = dp.length - 1, col = dp[row].length -1; ; ) {
-            list.add(new int[]{row,col});
-            if(row==0 && col==0) {
+        int row = dp.length - 1;
+        int col = dp[row].length - 1;
+        while (true) {
+            list.add(new int[]{row, col});
+            if (row == 0 && col == 0) {
                 break;
-            }
-            else if(row==0) {
-                col=col-1;
-            } else if (col==0) {
-                row = row-1;
+            } else if (row == 0) {
+                col = col - 1;
+            } else if (col == 0) {
+                row = row - 1;
             } else {
-                if(dp[row-1][col] > dp[row][col-1]) {
-                    row = row-1;
+                if (dp[row - 1][col] > dp[row][col - 1]) {
+                    row = row - 1;
                 } else {
-                    col = col-1;
+                    col = col - 1;
                 }
             }
         }
         Collections.reverse(list);
-        list.stream().forEach(a-> System.out.println(Arrays.toString(a)));
+        list.stream().forEach(a -> System.out.println(Arrays.toString(a)));
     }
 }
