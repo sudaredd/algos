@@ -15,4 +15,15 @@ public class MinimumPathSumTest {
         };
         Assertions.assertEquals(7, minimumPathSum.minPathSum(grid));
     }
+
+    @Test
+    public void testMinimumPathSum_practice1() {
+
+        int[][] grid = {
+                {1,3,1},
+                {1,5,1},
+                {4,2,1}
+        };
+        Assertions.assertEquals(7, minimumPathSum.minPathSum_practice(grid));
+    }
 }

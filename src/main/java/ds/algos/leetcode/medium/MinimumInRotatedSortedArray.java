@@ -19,7 +19,7 @@ public class MinimumInRotatedSortedArray {
     }
 
     public static void main(String[] args) {
-        System.out.println(new MinimumInRotatedSortedArray().findMin(new int[] {4,5,6,7,0,1,2}));
+        System.out.println(new MinimumInRotatedSortedArray().findMin(new int[] {4,5,6,7,0,1,2,3}));
         System.out.println(new MinimumInRotatedSortedArray().findMin(new int[] {3,4,5,1,2}));
         System.out.println(new MinimumInRotatedSortedArray().findMin(new int[] {3,1,2}));
         System.out.println(new MinimumInRotatedSortedArray().findMin(new int[] {5,1,2,3,4}));

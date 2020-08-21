@@ -10,8 +10,8 @@ public class TwoSumTest {
 
     @Test
     public void testTwoSum() {
-       int res[] =  twoSum.twoSum(new int[]{2, 7, 11, 15}, 9);
+       int res[] =  twoSum.twoSum(new int[]{2, 7, 11, 15}, 17);
         assertTrue(res != null);
-        assertArrayEquals(new int[] {0,1}, res);
+        assertArrayEquals(new int[] {0,3}, res);
     }
 }

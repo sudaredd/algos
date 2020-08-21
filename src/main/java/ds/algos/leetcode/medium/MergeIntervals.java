@@ -34,32 +34,32 @@ public class MergeIntervals {
         return list.toArray(new int[list.size()][]);
     }
 
-    public int[][] merge1(int[][] intervals) {
-        if (intervals == null || intervals.length < 1)
-            return intervals;
+    public int[][] merge_practice1(int[][] intervals) {
 
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
-        int results[][] = new int[intervals.length][intervals[0].length];
-        int pos = 0;
-        int first[] = intervals[0];
+        List<int[]> intervalsL = new ArrayList<>();
+        int []current = intervals[0];
+        intervalsL.add(current);
 
-        for (int i = 0; i < intervals.length - 1; i++) {
-            int second[] = intervals[i + 1];
-            if (first[first.length - 1] >= second[0]) {
-                int[] res = new int[]{first[0], Math.max(first[first.length - 1], second[1])};
-                results[pos++] = res;
-                first = res;
-                i++;
+        for(int[] interval : intervals) {
+
+            int currentEnd = current[1];
+
+            int nextBegin = interval[0];
+
+            if(currentEnd >= nextBegin) {
+
+                current[1] = Math.max(currentEnd, interval[1]);
+
             } else {
-                results[pos++] = first;
-                results[pos++] = second;
+
+                current = interval;
+
+                intervalsL.add(current);
+
             }
         }
-        int results2[][] = new int[pos][2];
-
-        System.arraycopy(results, 0, results2, 0, pos);
-
-        System.out.println(pos);
-        return results2;
+        return intervalsL.toArray(new int[intervalsL.size()][]);
     }
+
+
 }
