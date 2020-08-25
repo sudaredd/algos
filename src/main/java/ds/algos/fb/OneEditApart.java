@@ -17,6 +17,7 @@ public class OneEditApart {
         System.out.println(oneEditApart("cat", "dog") == false);
         System.out.println(oneEditApart("cat", "cats") == true);
         System.out.println(oneEditApart("cat", "cut") == true);
+        System.out.println(oneEditApart("dog", "god") == false);
         System.out.println(oneEditApart("cat", "cast") == true);
         System.out.println(oneEditApart("cat", "at") == true);
         System.out.println(oneEditApart("cat", "act") == false);
