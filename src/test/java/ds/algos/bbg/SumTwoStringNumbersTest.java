@@ -23,5 +23,9 @@ class SumTwoStringNumbersTest {
         assertEquals("579", sumTwoStrings("123", "456"));
 
         assertEquals("2556", sumTwoStrings("2100", "456"));
+
+        assertEquals("100", sumTwoStrings("24", "76"));
     }
+
+
 }

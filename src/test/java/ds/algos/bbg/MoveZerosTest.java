@@ -20,4 +20,15 @@ class MoveZerosTest {
 
         Assertions.assertArrayEquals(expected, arr);
     }
+    @Test
+    void moveZeros_practice() {
+
+        int arr[] = {0, 1, 0, 3, 12};
+
+        new MoveZeros().moveZeros_practice(arr);
+
+        int expected[] = {1, 3, 12, 0, 0};
+
+        Assertions.assertArrayEquals(expected, arr);
+    }
 }

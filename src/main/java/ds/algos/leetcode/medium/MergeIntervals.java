@@ -37,28 +37,28 @@ public class MergeIntervals {
     public int[][] merge_practice1(int[][] intervals) {
 
         List<int[]> intervalsL = new ArrayList<>();
-        int []current = intervals[0];
+
+        int current[] = intervals[0];
+
         intervalsL.add(current);
 
         for(int[] interval : intervals) {
 
             int currentEnd = current[1];
-
             int nextBegin = interval[0];
+            int nextEnd = interval[1];
 
             if(currentEnd >= nextBegin) {
-
-                current[1] = Math.max(currentEnd, interval[1]);
-
+                int res = Math.max(currentEnd, nextEnd);
+                current[1] = res;
             } else {
-
                 current = interval;
-
                 intervalsL.add(current);
-
             }
         }
+
         return intervalsL.toArray(new int[intervalsL.size()][]);
+
     }
 
 
