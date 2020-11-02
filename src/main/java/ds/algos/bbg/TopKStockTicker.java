@@ -21,7 +21,7 @@ public class TopKStockTicker {
 
     public void addOrUpdateStock(String stock, double price) {
 
-        stockMap.compute(stock, (k, v) -> v == null ? price : v + price);
+        stockMap.put(stock, stockMap.getOrDefault(stock, 0.0) + price);
 
     }
 

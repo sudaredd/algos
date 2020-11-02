@@ -5,6 +5,7 @@ public class MaxSubArray {
     public static void main(String[] args) {
         int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         System.out.println(new MaxSubArray().maxSubArray(arr));
+        System.out.println(new MaxSubArray().maxSubArray_practice(arr));
     }
 
     public int maxSubArray(int[] ary) {
@@ -20,6 +21,29 @@ public class MaxSubArray {
 
             if (sum < 0)
                 sum = 0;
+        }
+
+        return max;
+
+    }
+
+
+    public int maxSubArray_practice(int[] ary) {
+
+        int max = 0;
+
+        int sum = 0;
+
+        for (int i = 0; i < ary.length; i++) {
+
+            sum = sum + ary[i];
+
+            if (max < sum) {
+                max = sum;
+            }
+            if (sum < 0) {
+                sum = 0;
+            }
         }
 
         return max;
