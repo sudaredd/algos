@@ -16,7 +16,8 @@ public class MergeIntervals {
         if (intervals == null || intervals.length < 1)
             return intervals;
 
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+//        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        Arrays.sort(intervals, ((o1, o2) -> Integer.compare(o1[0],o2[0] )));
         List<int[]> list = new ArrayList<>();
         int[] current = intervals[0];
         list.add(current);

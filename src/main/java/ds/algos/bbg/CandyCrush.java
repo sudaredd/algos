@@ -19,6 +19,8 @@ public class CandyCrush {
 
 
     public static void main(String[] args) {
+        System.out.println(removeDuplicates("aaacc", 3));
+
         System.out.println(removeDuplicates("aaabbbc", 3));
         System.out.println(removeDuplicates("aabbbacd", 3));
 
@@ -48,7 +50,9 @@ public class CandyCrush {
 
         StringBuilder stringBuilder = new StringBuilder();
         while (!stack.isEmpty()) {
-            stringBuilder.insert(0, stack.pop().value);
+            Candy candy = stack.pop();
+            for(int i=0; i<candy.occurrances; i++)
+                stringBuilder.insert(0, candy.value);
 //            stringBuilder.append(stack.pop().value);
         }
         return stringBuilder.toString();
@@ -73,7 +77,8 @@ public class CandyCrush {
         StringBuilder stringBuilder = new StringBuilder();
         while (!stack.isEmpty()) {
             Candy candy = stack.pop();
-            stringBuilder.insert(0, candy.value);
+            for(int i=0; i<candy.occurrances; i++)
+                stringBuilder.insert(0, candy.value);
         }
         return stringBuilder.toString();
     }
