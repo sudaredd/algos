@@ -1,2 +1,2 @@
 # algos
-This project will add examples for various Datastructures and Algorithms
+This project solves problems using various Datastructures and Algorithms
