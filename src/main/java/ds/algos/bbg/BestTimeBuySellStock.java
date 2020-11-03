@@ -23,4 +23,19 @@ public class BestTimeBuySellStock {
 
         return maxProfit;
     }
+
+    public int maxProfit_practice(int[] arr) {
+        int maxProfit = Integer.MIN_VALUE;
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            int m = arr[i] - min;
+            if (m > maxProfit) {
+                maxProfit = m;
+            }
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return maxProfit;
+    }
 }

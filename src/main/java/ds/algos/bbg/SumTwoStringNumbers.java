@@ -26,7 +26,7 @@ public class SumTwoStringNumbers {
 
             int sum = one + two + carry;
 
-            if (sum > 10) {
+            if (sum >= 10) {
                 carry = sum / 10;
                 sum = sum % 10;
             } else {
@@ -36,6 +36,12 @@ public class SumTwoStringNumbers {
             result.insert(0, sum);
         }
 
+        if(carry >0) {
+            result.insert(0, carry);
+        }
+
         return result.toString();
     }
+
+
 }

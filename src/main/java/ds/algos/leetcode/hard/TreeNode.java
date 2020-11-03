@@ -2,13 +2,13 @@ package ds.algos.leetcode.hard;
 
 public class TreeNode {
     int val;
-    TreeNode left;
-    TreeNode right;
+   public TreeNode left;
+   public TreeNode right;
 
-    TreeNode() {
+    public TreeNode() {
     }
 
-    TreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 
@@ -17,6 +17,20 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
+
+    public int getVal() {
+        return val;
+    }
+
+    public TreeNode getLeft() {
+        return left;
+    }
+
+    public TreeNode getRight() {
+        return right;
+    }
+
+
 
     @Override
     public String toString() {

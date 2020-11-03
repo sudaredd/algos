@@ -16,7 +16,8 @@ public class MergeIntervals {
         if (intervals == null || intervals.length < 1)
             return intervals;
 
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+//        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        Arrays.sort(intervals, ((o1, o2) -> Integer.compare(o1[0],o2[0] )));
         List<int[]> list = new ArrayList<>();
         int[] current = intervals[0];
         list.add(current);
@@ -37,28 +38,28 @@ public class MergeIntervals {
     public int[][] merge_practice1(int[][] intervals) {
 
         List<int[]> intervalsL = new ArrayList<>();
-        int []current = intervals[0];
+
+        int current[] = intervals[0];
+
         intervalsL.add(current);
 
         for(int[] interval : intervals) {
 
             int currentEnd = current[1];
-
             int nextBegin = interval[0];
+            int nextEnd = interval[1];
 
             if(currentEnd >= nextBegin) {
-
-                current[1] = Math.max(currentEnd, interval[1]);
-
+                int res = Math.max(currentEnd, nextEnd);
+                current[1] = res;
             } else {
-
                 current = interval;
-
                 intervalsL.add(current);
-
             }
         }
+
         return intervalsL.toArray(new int[intervalsL.size()][]);
+
     }
 
 

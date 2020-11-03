@@ -1,9 +1,6 @@
 package ds.algos.linkedList;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class MergeKSortedList {
 
@@ -22,6 +19,17 @@ public class MergeKSortedList {
         ListNode[] lists = {first, second, third};
 
         System.out.println(new MergeKSortedList().mergeKLists(lists));
+        System.out.println(new MergeKSortedList().mergeKListsPriority(lists));
+        System.out.println(new MergeKSortedList().mergeKListsPriority_practice(lists));
+
+        ListNode test2 = new ListNode(-2);
+        test2.next = new ListNode(-1);
+        test2.next.next = new ListNode(-1);
+        test2.next.next.next = new ListNode(-1);
+
+        ListNode res = new MergeKSortedList().mergeKListsPriority_practice(new ListNode[]{test2});
+        System.out.println(res);
+
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
@@ -42,7 +50,7 @@ public class MergeKSortedList {
         return node.next;
     }
 
-    public ListNode mergeKListsPririty(ListNode[] lists) {
+    public ListNode mergeKListsPriority(ListNode[] lists) {
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
         for (ListNode listNode : lists) {
             while (listNode != null) {
@@ -58,4 +66,51 @@ public class MergeKSortedList {
         }
         return node.next;
     }
+
+    public ListNode mergeKListsPriority_practice(ListNode[] lists) {
+
+        ListNode listNode = new ListNode(0);
+        ListNode current = listNode;
+
+        Queue<ListNode> listNodes = new PriorityQueue<>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode l1, ListNode l2) {
+                return l1.getVal() == l2.getVal() ? 0 : l1.val > l2.val ? 1 : -1;
+            }
+        });
+
+//        (l1, l2)-> l1.getVal() - l2.getVal()
+
+        for(ListNode listNode1 : lists) {
+            while (listNode1 != null) {
+                listNodes.offer(listNode1);
+                listNode1 = listNode1.next;
+            }
+        }
+        while (!listNodes.isEmpty()) {
+            ListNode node = listNodes.poll();
+            current.next = node;
+            current = current.next;
+        }
+        return listNode.next;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
