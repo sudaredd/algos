@@ -21,7 +21,6 @@ public class CandyCrush {
     public static void main(String[] args) {
         System.out.println(removeDuplicates("aaacc", 3));
 
-        System.out.println(removeDuplicates("aaabbbc", 3));
         System.out.println(removeDuplicates("aabbbacd", 3));
 
         System.out.println(removeDuplicates_practice("aaabbbc", 3));
@@ -39,8 +38,8 @@ public class CandyCrush {
 
             if (!stack.isEmpty() && stack.peek().value == val) {
                 Candy candy = stack.pop();
-                if (candy.occurrances < k-1 ) {
-                    candy.occurrances += 1;
+                if (candy.occurrences < k-1 ) {
+                    candy.occurrences += 1;
                     stack.push(candy);
                 }
             } else {
@@ -51,7 +50,7 @@ public class CandyCrush {
         StringBuilder stringBuilder = new StringBuilder();
         while (!stack.isEmpty()) {
             Candy candy = stack.pop();
-            for(int i=0; i<candy.occurrances; i++)
+            for(int i = 0; i<candy.occurrences; i++)
                 stringBuilder.insert(0, candy.value);
 //            stringBuilder.append(stack.pop().value);
         }
@@ -66,8 +65,8 @@ public class CandyCrush {
         for (int i = 1; i < s.length(); i++) {
             if (!stack.isEmpty() && stack.peek().value == s.charAt(i)) {
                 Candy candy = stack.pop();
-                if (candy.occurrances < k - 1) {
-                    candy.occurrances = candy.occurrances + 1;
+                if (candy.occurrences < k - 1) {
+                    candy.occurrences = candy.occurrences + 1;
                     stack.push(candy);
                 }
             } else {
@@ -77,7 +76,7 @@ public class CandyCrush {
         StringBuilder stringBuilder = new StringBuilder();
         while (!stack.isEmpty()) {
             Candy candy = stack.pop();
-            for(int i=0; i<candy.occurrances; i++)
+            for(int i = 0; i<candy.occurrences; i++)
                 stringBuilder.insert(0, candy.value);
         }
         return stringBuilder.toString();
@@ -85,7 +84,7 @@ public class CandyCrush {
 
     static class Candy {
         char value;
-        int occurrances = 1;
+        int occurrences = 1;
 
         Candy(char c) {
             value = c;

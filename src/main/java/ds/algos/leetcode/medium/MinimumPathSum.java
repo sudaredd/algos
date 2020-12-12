@@ -1,6 +1,8 @@
 package ds.algos.leetcode.medium;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MinimumPathSum {
     public int minPathSum(int[][] grid) {
@@ -24,25 +26,24 @@ public class MinimumPathSum {
     }
 
     public int minPathSum_practice(int[][] grid) {
-        int rowLength = grid.length;
-        int colLength = grid[0].length;
-        int dp[][] = new int[rowLength][colLength];
-        Arrays.stream(grid).map(Arrays::toString).forEach(System.out::println);
-        System.out.println();
-        for (int row = 0; row < rowLength; row++) {
-            for (int col = 0; col < colLength; col++) {
-                if (row == 0 && col == 0) {
-                    dp[row][col] = grid[row][col];
-                } else {
-                    int top = row == 0 ? Integer.MAX_VALUE : dp[row - 1][col];
-                    int prev = col == 0 ? Integer.MAX_VALUE : dp[row][col - 1];
-                    dp[row][col] = grid[row][col] + Math.min(top, prev);
+        int dp[][] = new int[grid.length][grid[0].length];
+
+
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                dp[i][j] = grid[i][j];
+                if (i > 0 && j > 0) {
+                    dp[i][j] += Math.min(dp[i - 1][j], dp[i][j - 1]);
+                    String p = dp[i - 1][j] < dp[i][j-1] ? i-1 + "_" + (j) : i + "_" + (j-1);
+                } else if (i > 0) {
+                    dp[i][j] += dp[i - 1][j];
+                } else if (j > 0) {
+                    dp[i][j] += dp[i][j - 1];
                 }
             }
         }
         Arrays.stream(dp).map(Arrays::toString).forEach(System.out::println);
-
-        return dp[rowLength - 1][colLength - 1];
+        return dp[dp.length - 1][dp[0].length - 1];
 
     }
 
