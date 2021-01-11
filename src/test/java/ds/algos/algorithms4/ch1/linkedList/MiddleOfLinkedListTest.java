@@ -6,8 +6,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.logging.Logger;
+
 public class MiddleOfLinkedListTest {
     ListNode firstNode;
+
+    static Logger logger = Logger.getLogger("MiddleOfLinkedListTest");
 
     @BeforeEach
     public void init() {
@@ -21,6 +25,7 @@ public class MiddleOfLinkedListTest {
 
     @Test
     public void testMiddleItem() {
+        logger.info("input node is ::"+firstNode);
         MiddleOfLinkedList middle = new MiddleOfLinkedList();
         ListNode middleItem = middle.middleNode(firstNode);
         Assertions.assertNotNull(middleItem);
