@@ -13,7 +13,7 @@ public class MiddleOfLinkedListTest {
 
     static Logger logger = Logger.getLogger("MiddleOfLinkedListTest");
 
-    @BeforeEach
+//    @BeforeEach
     public void init() {
         ListNode sixthNode = new ListNode(6);
         ListNode fifthNode = new ListNode(5,sixthNode);
@@ -25,6 +25,7 @@ public class MiddleOfLinkedListTest {
 
     @Test
     public void testMiddleItem() {
+        init();
         logger.info("input node is ::"+firstNode);
         MiddleOfLinkedList middle = new MiddleOfLinkedList();
         ListNode middleItem = middle.middleNode(firstNode);
