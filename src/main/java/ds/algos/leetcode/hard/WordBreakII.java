@@ -26,9 +26,34 @@ public class WordBreakII {
 
     public static void main(String[] args) {
         System.out.println(wordBreak("catsanddog", Arrays.asList("cat", "cats", "and", "sand", "dog")));
-        System.out.println("----------------------");
         System.out.println(wordBreak("pineapplepenapple", Arrays.asList("apple", "pen", "applepen", "pine", "pineapple")));
+
+        System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println(wordsBreak("catsanddog", Arrays.asList("cat", "cats", "and", "sand", "dog")));
+        System.out.println(wordsBreak("pineapplepenapple", Arrays.asList("apple", "pen", "applepen", "pine", "pineapple")));
     }
+
+    public static List<String> wordsBreak(String s, List<String> wordDict) {
+        List<String> l = new ArrayList<>();
+        if (s == null || s.isEmpty()) {
+            l.add("");
+            return l;
+        }
+
+        for (String word : wordDict) {
+            if (s.startsWith(word)) {
+                List<String> list = wordsBreak(s.substring(word.length()), wordDict);
+                if (list != null) {
+                    for(String str : list)
+                        l.add(word + " "+ str.trim());
+                }
+            }
+        }
+        return l;
+    }
+
 
     public static List<String> wordBreak(String s, List<String> wordDict) {
 
@@ -50,8 +75,6 @@ public class WordBreakII {
         for (String word : wordDict) {
             if (s.startsWith(word)) {
                 List<String> subWordStr = wordBreakHelper(s.substring(word.length()), wordDict, cache);
-                System.out.println("substr size :"+subWordStr.size());
-                System.out.println(subWordStr);
                 for (String str : subWordStr) {
                     str = !str.isEmpty() ? " " + str : str;
                     results.add(word + str);

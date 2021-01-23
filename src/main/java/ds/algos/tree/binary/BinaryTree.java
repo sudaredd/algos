@@ -22,7 +22,8 @@ public class BinaryTree {
         System.out.println("Post Order:"+list);
 
         System.out.println(binaryTree.sumOfAllNodes(root));
-        System.out.println(binaryTree.sumOfAllNodesAtLevelN(root,1));
+        System.out.println("sum at level:"+binaryTree.sumOfAllNodesAtLevelN(root,1));
+        System.out.println("sum at level:"+binaryTree.sumOfAllNodesAtLevelK_Practice(root,1));
 
         root.left.left.left = new Node(3);
         System.out.println(binaryTree.maxLevel(root));
@@ -47,6 +48,18 @@ public class BinaryTree {
         return node==null ? 0 : sumOfAllNodes(node.left) + node.value + sumOfAllNodes(node.right);
     }
 
+
+    public int sumOfAllNodesAtLevelK_Practice(Node node, int n) {
+
+        if(node == null || n < 0)
+            return 0;
+
+        if(n==0) {
+            return node.value;
+        }
+        return sumOfAllNodesAtLevelK_Practice(node.left, n-1) +
+                sumOfAllNodesAtLevelK_Practice(node.right, n-1);
+    }
 
     public int sumOfAllNodesAtLevelN(Node node, int n) {
 

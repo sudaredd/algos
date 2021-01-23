@@ -77,16 +77,16 @@ public class BinaryTreeLevelOrder {
         Queue<Integer> levelQ = new LinkedList<>();
 
         queue.add(root);
-        levelQ.add(0);
+        levelQ.add(1);
         while (!queue.isEmpty()) {
 
             TreeNode node = queue.poll();
             int level = levelQ.poll();
 
-            if(levels.size() < level+1) {
+            if(levels.size() < level) {
                 levels.add(new ArrayList<>());
             }
-            levels.get(level).add(node.getVal());
+            levels.get(level-1).add(node.getVal());
 
             if(node.left != null) {
                 queue.offer(node.left);
@@ -101,5 +101,4 @@ public class BinaryTreeLevelOrder {
 
         return levels;
     }
-
 }

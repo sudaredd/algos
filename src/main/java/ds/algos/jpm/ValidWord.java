@@ -5,7 +5,7 @@ import java.util.Objects;
 public class ValidWord {
     public static void main(String[] args) {
         ValidWord validWord = new ValidWord();
-        validWord.canDecompose("scream");
+        System.out.println(validWord.canDecompose("scream"));
     }
 
     /**
@@ -36,7 +36,7 @@ public class ValidWord {
      */
     public String isValid(String str) {
         for (int i = 0; i < str.length(); i++) {
-            String stringToTest = str.substring(0, i) + str.substring(i + 1, str.length());
+            String stringToTest = str.substring(0, i) + str.substring(i + 1);
             boolean flag = isValidWord(stringToTest);
             if (flag)
                 return stringToTest;

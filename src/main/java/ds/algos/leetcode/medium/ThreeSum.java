@@ -8,6 +8,7 @@ public class ThreeSum {
 
     public static void main(String[] args) {
         System.out.println(new ThreeSum().threeSum(new int[] {-1, 0, 1, 2, -1, -4}));
+        System.out.println(new ThreeSum().threeSum(new int[] {-1, -1, 2}));
     }
     public List<List<Integer>> threeSum(int[] nums) {
         if(nums == null || nums.length <3)
