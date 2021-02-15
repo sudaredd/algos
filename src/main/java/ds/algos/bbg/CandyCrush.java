@@ -22,11 +22,15 @@ public class CandyCrush {
         System.out.println(removeDuplicates("aaaacc", 3));
         System.out.println(removeDuplicatesWithStacks("aaaacc", 3));
         System.out.println(removeDuplicatesWithStacksKOrMore("aaaacc", 3));
-
         System.out.println(removeDuplicates("aabbbaacd", 3));
         System.out.println(removeDuplicatesWithStacks("aabbbaacd", 3));
-        System.out.println(removeDuplicatesWithStacksKOrMore("aabbbaacd", 3));
 
+        System.out.println("------------------");
+        System.out.println(removeDuplicatesWithStacksKOrMore("aabbbaacd", 3));
+        System.out.println(removeDuplicatesWithStacksKOrMore("aaabbbacd", 3));
+        System.out.println(removeDuplicatesWithStacksKOrMore_practice("aabbbaacd", 3));
+        System.out.println(removeDuplicatesWithStacksKOrMore_practice("aaabbbacd", 3));
+        System.out.println("------------------");
         System.out.println(removeDuplicates_practice("aaabbbc", 3));
         System.out.println(removeDuplicates_practice("aabbbacd", 3));
     }
@@ -110,6 +114,34 @@ public class CandyCrush {
         return sb.toString();
     }
 
+
+    public static String removeDuplicatesWithStacksKOrMore_practice(String s, int k) {
+        Stack<Character> stack = new Stack<>();
+        Stack<Integer> counter = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int count = 1;
+
+            while (i + 1 < s.length() && c == s.charAt(i + 1)) {
+                count++;
+                i++;
+            }
+
+            if (!stack.isEmpty() && stack.peek() == c) {
+                count = count + counter.pop();
+                stack.pop();
+            }
+            if (count < k) {
+                counter.push(count);
+                stack.push(c);
+            }
+        }
+
+        StringBuilder sb = finalResult(stack, counter);
+        return sb.toString();
+    }
+
     public static String removeDuplicatesWithStacksKOrMore(String s, int k) {
         Stack<Character> stack = new Stack<>();
         Stack<Integer> counter = new Stack<>();
@@ -129,7 +161,7 @@ public class CandyCrush {
                     lastChar = c;
                 }
             } else {
-                if(lastChar ==c)
+                if (lastChar == c)
                     continue;
                 stack.push(c);
                 counter.push(1);
