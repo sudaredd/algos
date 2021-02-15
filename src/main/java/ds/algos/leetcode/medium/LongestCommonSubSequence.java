@@ -3,12 +3,12 @@ package ds.algos.leetcode.medium;
 public class LongestCommonSubSequence {
 
     public static void main(String[] args) {
-         System.out.println(new LongestCommonSubSequence().longtestCommonSubSequence("abce","acbf"));
-         System.out.println(new LongestCommonSubSequence().longtestCommonSubSequence("bsbininm","jmjkbkjkv"));
+         System.out.println(new LongestCommonSubSequence().longestCommonSubSequence("abce","acbf"));
+         System.out.println(new LongestCommonSubSequence().longestCommonSubSequence("bsbininm","jmjkbkjkv"));
          System.out.println(new LongestCommonSubSequence().longestCommonSubsequence("bsbininlm","jmjkbkjkvl"));
     }
 
-    public int longtestCommonSubSequence(String text1, String text2) {
+    public int longestCommonSubSequence(String text1, String text2) {
         if(text1==null || text2==null)
             return 0;
         int fLength = text1.length();
