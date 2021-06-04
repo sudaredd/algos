@@ -30,12 +30,31 @@ public class AddTwoNumbers {
 
         ListNode r = new ListNode(5);
         r.next = new ListNode(6);
-        r.next.next = new ListNode(4);
+        r.next.next = new ListNode(6);
 
         System.out.println(addTwoNumbers(l, r));
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode temp = new ListNode(0);
+        ListNode prev = l1, next = l2, current = temp;
+        int carry = 0;
+        while(prev != null || next != null) {
+            int p = prev != null ? prev.val : 0;
+            int n = next != null ? next.val : 0;
+            int sum = carry+p+n;
+            carry = sum / 10;
+            current.next = new ListNode(sum%10);
+            current = current.next;
+            if(prev != null) prev = prev.next;
+            if(next != null) next = next.next;
+        }
+        if(carry > 0)
+            current.next = new ListNode(carry);
+        return temp.next;
+    }
+
+    public static ListNode addTwoNumbersa(ListNode l1, ListNode l2) {
         ListNode listNode = new ListNode(0);
         ListNode currHead = listNode;
 
