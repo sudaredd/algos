@@ -14,34 +14,46 @@ package ds.algos.amazon;
  */
 public class MyAtoi {
     public static void main(String[] args) {
+        System.out.println(myAtoi("2147483646"));
         System.out.println(myAtoi("  -123"));
         System.out.println(myAtoi("  +32"));
         System.out.println(myAtoi("  32"));
         System.out.println(myAtoi("-0005880"));
     }
+
     public static int myAtoi(String s) {
+        if (s.isEmpty()) {
+            return 0;
+        }
+        char[] chars = s.toCharArray();
         int i = 0;
-        while (i < s.length() && s.charAt(i) == ' ') {
+        while (i < chars.length && chars[i] == ' ') {
             i++;
         }
-        int prefix = 1;
-        if (s.charAt(i) == '-') {
-            prefix = -1;
+        int sign = 1;
+        if (chars[i] == '-') {
+            sign = -1;
             i++;
-        } else if(s.charAt(i)=='+') {
+        } else if (chars[i] == '+') {
             i++;
         }
         int res = 0;
-        while (i<s.length()) {
-            char c = s.charAt(i);
-            if(!Character.isDigit(c)) {
+        while (i < chars.length) {
+            char c = chars[i];
+            if (!Character.isDigit(c)) {
                 break;
             }
-            int val = c-'0';
-            res = res * 10 +val;
+
+            int val = c - '0';
+            if ((Integer.MAX_VALUE / 10 < res) || Integer.MAX_VALUE / 10 == res && Integer.MAX_VALUE % 10 < val)
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+
+            res = res * 10 + val;
             i++;
         }
 
-        return prefix * res;
+        return sign * res;
     }
+
+
 }
