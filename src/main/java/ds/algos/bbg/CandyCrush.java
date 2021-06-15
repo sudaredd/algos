@@ -30,6 +30,7 @@ public class CandyCrush {
         System.out.println(removeDuplicatesWithStacksKOrMore("aaabbbacd", 3));
         System.out.println(removeDuplicatesWithStacksKOrMore_practice("aabbbaacd", 3));
         System.out.println(removeDuplicatesWithStacksKOrMore_practice("aaabbbacd", 3));
+        System.out.println(removeDuplicatesWithStacksKOrMore_practice("aabbbaacccaad", 3));
         System.out.println("------------------");
         System.out.println(removeDuplicates_practice("aaabbbc", 3));
         System.out.println(removeDuplicates_practice("aabbbacd", 3));
