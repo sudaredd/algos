@@ -19,6 +19,7 @@ package ds.algos.amazon;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class BinaryTreeLevelOrderTraversal {
 
@@ -31,6 +32,8 @@ public class BinaryTreeLevelOrderTraversal {
         root.right.left = new TreeNode(15);
         root.right.right = new TreeNode(7);
         System.out.println(binaryTreeLevelOrderTraversal(root));
+        System.out.println(binaryTreeLevelOrderTraversal_P(root));
+        System.out.println(binaryTreeLevelOrderRecursiveTraversal(root));
     }
 
     public static List<List<Integer>> binaryTreeLevelOrderTraversal(TreeNode root) {
@@ -43,21 +46,65 @@ public class BinaryTreeLevelOrderTraversal {
             TreeNode node = queue.poll();
             int level = levelQueue.poll();
 
-            if(result.size() < level) {
+            if (result.size() < level) {
                 result.add(new ArrayList<>());
             }
-            result.get(level-1).add(node.val);
+            result.get(level - 1).add(node.val);
 
-            if(node.left != null) {
+            if (node.left != null) {
                 queue.add(node.left);
-                levelQueue.add(level+1);
+                levelQueue.add(level + 1);
             }
-            if(node.right != null) {
+            if (node.right != null) {
                 queue.add(node.right);
-                levelQueue.add(level+1);
+                levelQueue.add(level + 1);
             }
         }
         return result;
+    }
+
+    public static List<List<Integer>> binaryTreeLevelOrderTraversal_P(TreeNode root) {
+        List<List<Integer>> levels = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        Queue<Integer> levelQueue = new LinkedList<>();
+        queue.add(root);
+        levelQueue.add(1);
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            int level = levelQueue.poll();
+            if(levels.size() < level) {
+                levels.add(new ArrayList<>());
+            }
+            levels.get(level-1).add(node.val);
+
+            if(node.left != null) {
+                queue.offer(node.left);
+                levelQueue.offer(level+1);
+            }
+            if(node.right != null) {
+                queue.offer(node.right);
+                levelQueue.offer(level+1);
+            }
+        }
+
+        return levels;
+    }
+    public static List<List<Integer>> binaryTreeLevelOrderRecursiveTraversal(TreeNode root) {
+        List<List<Integer>> levels = new ArrayList<>();
+        binaryTreeLevelOrderRecursiveTraversal(root, 1, levels);
+        return levels;
+    }
+
+    private static void binaryTreeLevelOrderRecursiveTraversal(TreeNode node, int level, List<List<Integer>> levels) {
+        if(node == null) {
+            return;
+        }
+        if(levels.size() < level) {
+            levels.add(new ArrayList<>());
+        }
+        levels.get(level-1).add(node.val);
+        binaryTreeLevelOrderRecursiveTraversal(node.left, level+1, levels);
+        binaryTreeLevelOrderRecursiveTraversal(node.right, level+1, levels);
     }
 
     public static class TreeNode {

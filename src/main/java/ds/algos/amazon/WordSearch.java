@@ -3,9 +3,6 @@ package ds.algos.amazon;
 /**
  * Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
  * Output: true
- * Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
- * Output: true
- * <p>
  * https://www.youtube.com/watch?v=X0kX7PMOYi0
  */
 public class WordSearch {
