@@ -18,13 +18,6 @@ import java.util.UUID;
 public class IsConsecutive {
 
     public static void main(String[] args) {
-
-        long t = 1618643223198l;
-        Date date = new Date(1618643223198l);;
-        Format format = new SimpleDateFormat("yyyy MM dd HH:mm:ss");
-        System.out.println("dt:::"+format.format(date));
-
-        System.out.println(UUID.randomUUID());
         System.out.println(isConsecutive("123456789101112"));
         System.out.println(isConsecutive("91012"));
         System.out.println(isConsecutive("99100"));
