@@ -3,8 +3,9 @@ package ds.algos.bbg_practice;
 public class PossibleSameCharFreqByOneRemoval {
     public static void main(String[] args) {
         System.out.println(possibleSameCharFreqByOneRemoval("xyz"));
-        System.out.println(possibleSameCharFreqByOneRemoval("xxxyyyzz"));
+        System.out.println(possibleSameCharFreqByOneRemoval("xxyyyzz"));
         System.out.println(possibleSameCharFreqByOneRemoval("xxxxyyyzzz"));
+        System.out.println(possibleSameCharFreqByOneRemoval("xxxxyyyzzzz"));
     }
 
     private static boolean possibleSameCharFreqByOneRemoval(String str) {

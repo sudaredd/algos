@@ -17,7 +17,7 @@ public class WordBreak {
     }
 
     private static boolean wordBreak(String phrase, List<String> words) {
-        if (phrase == null || phrase.isBlank()) {
+        if (phrase.isEmpty()) {
             return true;
         }
         for (String word : words) {
